@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+class HelperWidget {
 
-Text actorName(
-      String name,
-      Color color,
-      String fontFamily,
-      FontWeight wieght) {
+static Text actorName( {
+     required String name,
+    required  Color color,
+      String? fontFamily,
+      FontWeight? wieght}) {
     return Text(
       name,
       style: TextStyle(
@@ -17,10 +18,10 @@ Text actorName(
   }
 
 
-Text noPhotoText(
-    String name,
-    Color color,
-    FontWeight wieght) {
+static Text noPhotoText({
+  required  String name,
+  required  Color color,
+  required  FontWeight wieght}) {
   return Text(
     name,
     style: TextStyle(
@@ -29,4 +30,5 @@ Text noPhotoText(
       fontWeight: wieght,
     ),
   );
+}
 }

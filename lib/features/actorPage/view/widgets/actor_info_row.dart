@@ -1,17 +1,20 @@
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
-import '../../../../common/dimentions.dart';
+
 import '../../../movieHome/viewModel/actor_provider.dart';
+import '../../../../common/dimentions.dart';
+import '../screens/biography_screen.dart';
 
 class ActorInfoRow extends StatelessWidget {
   const ActorInfoRow({
     Key? key,
-    required this.actorListIndex,
+    required this.actorListIndex,required this.actorId,
   }) : super(key: key);
 
   final int? actorListIndex;
+  final int? actorId;
 
   @override
   Widget build(BuildContext context) {
@@ -34,29 +37,37 @@ class ActorInfoRow extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Card(
-              color: Colors.teal,
-              elevation: 5,
-              child: SizedBox(
-                height: AppDimentions.mediaHieght(context)/4,
-                child: Scrollbar(
-                  thumbVisibility: true,
-                  trackVisibility: true,
-                  interactive: true,
-                  thickness: 5,
-                  child: SingleChildScrollView(
-                      padding: EdgeInsets.all(5),
-                      scrollDirection: Axis.vertical,
-                      dragStartBehavior:  DragStartBehavior.start ,
-                      child: Text('${Provider.of<ActorProvider>(context).actorsList[actorListIndex!].biography}',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.visible,
-
-                        ),
-                      )),
+            child: InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) =>  BiographyScreen (
+                   actorIndex: actorListIndex ,
+                   actorId: actorId,
+                  ),
                 ),
+                );
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text('Read about',
+                    style: TextStyle(
+                      color: Colors.amber,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      overflow: TextOverflow.visible,
+                    ),
+                  ),
+                  Text(Provider.of<ActorProvider>(context).actorsList[actorListIndex!].name,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      overflow: TextOverflow.visible,
+                    ),
+                  ),
+                ],
               ),
             ),
           )

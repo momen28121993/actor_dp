@@ -11,7 +11,7 @@ class ImagePathData {
 
 
 
-  featchPaths(String personId) async {
+  Future<List<Profiles>?> featchPaths(String personId) async {
     http.Response response = await http.get(Uri.parse(UrlData().urlBase(personId)));
 
     if (response.statusCode == 200) {

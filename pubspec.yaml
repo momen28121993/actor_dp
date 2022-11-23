@@ -44,6 +44,7 @@ dependencies:
   permission_handler: ^10.2.0
   dio: ^4.0.6
   equatable: ^2.0.5
+  collection: ^1.16.0
 
 
 dev_dependencies:
@@ -88,6 +89,10 @@ flutter:
     - family: DancingScript
       fonts:
         - asset: assets/fonts/DancingScript.ttf
+    - family: LoraItalicVariableFont
+      fonts:
+        - asset: assets/fonts/Lora-Italic-VariableFont.ttf
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

@@ -58,11 +58,13 @@ class ActorsHomePage extends StatelessWidget {
                                   ),
                                 ),
                                 Expanded(
-                                  child: actorName(
-                                      '${actorProv.actorsList[index].name}',
-                                      Colors.amber,
-                                      'DancingScript',
-                                      FontWeight.bold),
+                                  child: Center(
+                                    child: HelperWidget.actorName(
+                                      name:  actorProv.actorsList[index].name,
+                                      color:  Colors.amber,
+                                       fontFamily: 'DancingScript',
+                                     wieght: FontWeight.bold),
+                                  ),
                                 ),
                               ]),
                         ),
@@ -70,7 +72,7 @@ class ActorsHomePage extends StatelessWidget {
                     ),
                   );
                 } else {
-                  Provider.of<ActorProvider>(context, listen: false)
+                  Provider.of<ActorProvider>(context,listen: false)
                       .addMoreActors();
                   return const Padding(
                     padding: EdgeInsets.symmetric(vertical: 30.0),

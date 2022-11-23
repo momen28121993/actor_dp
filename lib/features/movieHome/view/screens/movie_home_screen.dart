@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import '../widgets/home_future_List.dart';
 
 class MovieHome extends StatelessWidget {
-  static String id = 'MovieHome';
+
+  static String routName = 'MovieHome';
+
   const MovieHome({Key? key}) : super(key: key);
 
   @override
@@ -23,8 +25,8 @@ class MovieHome extends StatelessWidget {
         ),
       ),
       body: Container(
-        width: double.maxFinite,
-        height: double.maxFinite,
+        width: double.infinity,
+        height: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(LocalPhotoPaths.background),

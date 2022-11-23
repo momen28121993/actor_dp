@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 
+
 class AppDimentions {
 
   static double mediaWidth (BuildContext context) =>
@@ -9,7 +10,7 @@ class AppDimentions {
   static double mediaHieght (BuildContext context) =>
       MediaQuery.of(context).size.height ;
 
-  static double toppadding (BuildContext context) =>
+  static double topPadding (BuildContext context) =>
       MediaQuery.of(context).padding.top ;
 
   static double bottomPadding (BuildContext context) =>

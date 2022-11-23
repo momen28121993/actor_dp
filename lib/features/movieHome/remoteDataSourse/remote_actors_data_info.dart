@@ -1,34 +1,41 @@
 import 'dart:convert';
-import 'package:dp_move/common/url_Path.dart';
-import 'package:dp_move/features/movieHome/models/actor_model.dart';
-import 'package:http/http.dart' as http;
+
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:http/http.dart' as http;
+
+import '../models/poplar_model.dart';
+import '/common/url_Path.dart';
+
+
+
 
 
 class RemoteActorData {
 
 
 
- Future<bool> connectionCheck() async {
-   bool result = await InternetConnectionChecker().hasConnection;
-   if(result == true) {
-     return result ;
-   } else {
-     return result ;
-   }
-  }
+ Future<bool> connectionCheck() async => await InternetConnectionChecker().hasConnection ;
 
-Future<ActorModel> fetchActorData(String actorId) async {
+
+
+
+
+Future<Poplar?> fetchActorData(String pageNum) async {
+  try{
     http.Response response =
-        await http.get(Uri.parse(UrlData().actorUrl(actorId)));
+        await http.get(Uri.parse(UrlData().actorUrl(pageNum)));
           print(response.statusCode);
     if (response.statusCode == 200) {
       String pathsData = response.body;
       var decodedData = jsonDecode(pathsData);
-      ActorModel actorData = ActorModel.fromJson(decodedData);
+      Poplar actorData = Poplar.fromJson(decodedData);
       return actorData;
-    } else {
-      return ActorModel(id: 0);
+    } else{
     }
+
+  }catch(e){
+    print(e.toString());
   }
+
+}
 }

@@ -51,10 +51,10 @@ class ImageGallaryGrid extends StatelessWidget {
                 );
               }else{
                 return Center(
-                  child: noPhotoText(
-                      'UnExpected Error',
-                      Colors.red,
-                      FontWeight.bold
+                  child: HelperWidget.noPhotoText(
+                     name:  'UnExpected Error',
+                     color:  Colors.red,
+                      wieght: FontWeight.bold
                   ),
                 );
               }

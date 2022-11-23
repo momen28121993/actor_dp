@@ -1,13 +1,16 @@
 
 import 'dart:typed_data';
 
-import 'package:dio/dio.dart';
-import 'package:dp_move/features/actorPage/remoteDataSource/remote_data_images_path.dart';
 import 'package:flutter/material.dart';
+
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:dio/dio.dart';
+
+import '/features/actorPage/remoteDataSource/remote_data_images_path.dart';
 import '../../../common/url_Path.dart';
 import '../models/profile_model.dart';
+
 
 class ImagePathProvider extends ChangeNotifier{
 
@@ -15,8 +18,8 @@ class ImagePathProvider extends ChangeNotifier{
 
   getFilePath(int personId) async {
     String actorId = personId.toString();
-   List<Profiles> paths = await ImagePathData().featchPaths(actorId);
-   return pathsList = paths ;
+   List<Profiles>? paths = await ImagePathData().featchPaths(actorId);
+   return pathsList = paths! ;
   }
 
   getPhotos(int index){

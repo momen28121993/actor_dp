@@ -1,76 +1,75 @@
-import 'package:dp_move/common/url_Path.dart';
-import 'package:dp_move/features/movieHome/models/actor_model.dart';
-import 'package:dp_move/features/movieHome/remoteDataSourse/remote_actors_data_info.dart';
-import 'package:equatable/equatable.dart';
+
 import 'package:flutter/cupertino.dart';
 
+import 'package:equatable/equatable.dart';
+
+import '/common/url_Path.dart';
+import '/features/movieHome/models/actor_model.dart';
+import '/features/movieHome/remoteDataSourse/remote_actors_data_info.dart';
+import '/features/movieHome/models/poplar_model.dart';
 import '../../../common/photos_paths.dart';
 
+
+
 class ActorProvider extends ChangeNotifier with EquatableMixin{
+  List<Poplar> poplarAllInfo= [];
   List<ActorModel> actorsList = [];
-  int actorNum = 7;
+  int pageNum = 1;
  late bool connect ;
 
-  connectionCheck()async{
+ Future<bool> connectionCheck()async{
     bool connectionCase = await RemoteActorData().connectionCheck();
    return  connect = connectionCase ;
   }
 
 
-  getActorData(String actorId) async {
+ getActorData() async {
+   poplarAllInfo.clear();
+   actorsList.clear();
+   String num = pageNum.toString();
+    Poplar? actorData = await RemoteActorData().fetchActorData(num);
+    poplarAllInfo.add(actorData!);
+   actorsList = poplarAllInfo.last.actorInfo;
 
-    var actordata = await RemoteActorData().fetchActorData(actorId);
-    return actordata;
+   return actorsList ;
+
   }
 
-  getActorsList() async {
-    actorsList.clear();
-    actorNum = 7 ;
-    for (int i = 0; i < actorNum; i++) {
-      String num = (i + 1).toString();
-      ActorModel? oneActorData = await getActorData(num);
-      if (oneActorData?.id != 0) {
-        actorsList.add(oneActorData!);
 
-      } else {}
+ addMoreActors() async {
+   List<ActorModel>   newActors = [];
+   pageNum = pageNum + 1 ;
+    String nextNum = pageNum.toString();
+    Poplar? actorData = await RemoteActorData().fetchActorData(nextNum);
+
+    if(actorData==null){
+     return addMoreActors();
+    }else{
+      poplarAllInfo.add(actorData);
     }
-    actorsList.toSet().toList();
 
-    return actorsList;
+   newActors = poplarAllInfo.last.actorInfo;
+
+   actorsList.addAll(newActors);
+
+
+  notifyListeners();
   }
 
-  addMoreActors() async {
-    actorNum = actorNum + 5;
-    for (int i = actorsList.length+1; i < actorNum; i++) {
-      String num = (i + 1).toString();
-      ActorModel? oneActorData = await getActorData(num);
-      if (oneActorData?.id != 0) {
-        actorsList.add(oneActorData!);
-      }
-    }
-    actorsList.toSet().toList();
-    notifyListeners();
-  }
 
-  // getGender(int index) {
-  //   if (actorsList[index].gender == 1) {
-  //     return 'femail';
-  //   } else {
-  //     return 'mail';
-  //   }
-  // }
 
   imageActor(int index) {
     if (actorsList[index].profilePath != null) {
-      return  NetworkImage(
+      return
+        NetworkImage(
             '${UrlData.baseUrlForNetImage}${actorsList[index].profilePath}');
 
     } else if (actorsList[index].profilePath == null &&
         actorsList[index].gender == 1) {
-      return AssetImage(LocalPhotoPaths.femalPhPath);
+      return const AssetImage(LocalPhotoPaths.femalPhPath);
     } else if (actorsList[index].profilePath == null &&
         actorsList[index].gender == 2) {
-      return AssetImage(LocalPhotoPaths.malePhPath);
+      return const AssetImage(LocalPhotoPaths.malePhPath);
     }
   }
 
