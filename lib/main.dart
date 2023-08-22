@@ -30,7 +30,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute:MovieHome.routName ,
         routes: routes ,
-
       ),
     );
   }}

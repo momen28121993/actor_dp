@@ -11,9 +11,9 @@ import '../widgets/actor_info_row.dart';
 
 class ActorScreen extends StatelessWidget {
   static String routName = 'ActorScreen' ;
-  final int? actorListIndex ;
-  final int? actorId ;
-  const ActorScreen({Key? key, required this.actorListIndex, this.actorId}) : super(key: key);
+  final int actorListIndex ;
+  final int actorId ;
+  const ActorScreen({Key? key, required this.actorListIndex,required this.actorId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class ActorScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor:AppColors.actorPageBackground ,
         title: HelperWidget.actorName(
-             name: Provider.of<ActorProvider>(context).actorsList[actorListIndex!].name,
+             name: Provider.of<ActorProvider>(context).actorsList[actorListIndex].name,
             color:  AppColors.actorPageTitleName,
              fontFamily: 'DancingScript',
              wieght : FontWeight.bold),

@@ -34,7 +34,7 @@ class ActorsHomePage extends StatelessWidget {
                       );
                     },
                     child: SizedBox(
-                      height: AppDimentions.mediaHieght(context) / 4,
+                      height: AppDimentions.mediaHeight(context) / 4,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 10.0, horizontal: 20),
@@ -44,16 +44,19 @@ class ActorsHomePage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
-                                  margin: const EdgeInsets.symmetric(
-                                      vertical: 25, horizontal: 10),
-                                  width: AppDimentions.mediaWidth(context) / 3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(50)),
-                                    image: DecorationImage(
-                                      image: actorProv.imageActor(index),
-                                      fit: BoxFit.fill,
+                                Hero(
+                                  tag: index,
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        vertical: 25, horizontal: 10),
+                                    width: AppDimentions.mediaWidth(context) / 3,
+                                    decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(50)),
+                                      image: DecorationImage(
+                                        image: actorProv.imageActor(index),
+                                        fit: BoxFit.fill,
+                                      ),
                                     ),
                                   ),
                                 ),

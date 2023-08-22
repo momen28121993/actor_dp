@@ -5,5 +5,5 @@ import 'features/actorPage/view/screens/actor_screen.dart';
 
 Map<String,Widget Function(BuildContext)> routes = {
      MovieHome.routName : (context) =>  const MovieHome() ,
-     ActorScreen.routName : (context) => const ActorScreen(actorListIndex: null,),
+     //ActorScreen.routName : (context) => const ActorScreen(),
    };

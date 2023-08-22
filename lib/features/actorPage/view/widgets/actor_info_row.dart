@@ -13,8 +13,8 @@ class ActorInfoRow extends StatelessWidget {
     required this.actorListIndex,required this.actorId,
   }) : super(key: key);
 
-  final int? actorListIndex;
-  final int? actorId;
+  final int actorListIndex;
+  final int actorId;
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +22,20 @@ class ActorInfoRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            margin:
-            const EdgeInsets.symmetric(vertical: 25,horizontal: 10),
-            width: AppDimentions.mediaWidth(context) / 3,
-            height: AppDimentions.mediaHieght(context)/4,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                  Radius.circular(50)),
-              image: DecorationImage(
-                image: Provider.of<ActorProvider>(context).imageActor(actorListIndex!),
-                fit: BoxFit.fill,
+          Hero(
+            tag: actorListIndex,
+            child: Container(
+              margin:
+              const EdgeInsets.symmetric(vertical: 25,horizontal: 10),
+              width: AppDimentions.mediaWidth(context) / 3,
+              height: AppDimentions.mediaHeight(context)/4,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(
+                    Radius.circular(50)),
+                image: DecorationImage(
+                  image: Provider.of<ActorProvider>(context).imageActor(actorListIndex),
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
           ),

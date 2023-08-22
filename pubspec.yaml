@@ -45,11 +45,23 @@ dependencies:
   dio: ^4.0.6
   equatable: ^2.0.5
   collection: ^1.16.0
+  flutter_native_splash: ^2.2.15
+
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_native_splash:
+  image_ios: assets/images/androidsplash.png
+  color: "#FFFFFF"
+  image: assets/images/androidsplash.png
+  android_12:
+    color: "#FFFFFF"
+    image: assets/images/androidsplash.png
+    color_dark: "#FFFFFF"
+    image_dark: assets/images/androidsplash.png
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

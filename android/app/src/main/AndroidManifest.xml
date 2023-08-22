@@ -2,8 +2,9 @@
     package="com.example.dp_move">
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="dp_move"
+        android:label="Poplar Actor"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
